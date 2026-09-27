@@ -60,7 +60,7 @@ function BookDetails() {
 
         try {
             await axios.post(
-                "${API_URL}/api/reviews",
+                `${API_URL}/api/reviews`,
                 {
                     userId: storedUser.id,
                     bookId: id,
@@ -107,7 +107,7 @@ function BookDetails() {
 
     try {
         await axios.post(
-            "${API_URL}/api/shelves",
+            `${API_URL}/api/shelves`,
             {
                 userId: storedUser.id,
                 bookId: id,
