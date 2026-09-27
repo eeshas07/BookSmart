@@ -127,7 +127,7 @@ const handleBuyNow = async () => {
     try {
         // Ask our backend to create a Razorpay order
         const response = await axios.post(
-            "${API_URL}/api/orders/create-order",
+            `${API_URL}/api/orders/create-order`,
             {
                 amount: book.price
             }
