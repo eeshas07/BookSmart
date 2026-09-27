@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import API_URL from "../api";
 
 function BookDetails() {
     const { id } = useParams();
@@ -16,7 +17,7 @@ function BookDetails() {
     // Get book
     useEffect(() => {
         axios
-            .get(`http://localhost:5005/api/books/${id}`)
+            .get(`${API_URL}/api/books/${id}`)
             .then((response) => {
                 setBook(response.data);
             })
@@ -28,7 +29,7 @@ function BookDetails() {
     // Get reviews
     const getReviews = () => {
         axios
-            .get(`http://localhost:5005/api/reviews/${id}`)
+            .get(`${API_URL}/api/reviews/${id}`)
             .then((response) => {
                 setReviews(response.data);
             })
@@ -59,7 +60,7 @@ function BookDetails() {
 
         try {
             await axios.post(
-                "http://localhost:5005/api/reviews",
+                "${API_URL}/api/reviews",
                 {
                     userId: storedUser.id,
                     bookId: id,
@@ -106,7 +107,7 @@ function BookDetails() {
 
     try {
         await axios.post(
-            "http://localhost:5005/api/shelves",
+            "${API_URL}/api/shelves",
             {
                 userId: storedUser.id,
                 bookId: id,
@@ -126,7 +127,7 @@ const handleBuyNow = async () => {
     try {
         // Ask our backend to create a Razorpay order
         const response = await axios.post(
-            "http://localhost:5005/api/orders/create-order",
+            "${API_URL}/api/orders/create-order",
             {
                 amount: book.price
             }

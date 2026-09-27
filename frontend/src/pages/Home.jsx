@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";import axios from "axios";
 import BookCard from "../components/BookCard";
 import Navbar from "../components/Navbar";
+import API_URL from "../api";
 
 function Home() {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://localhost:5005/api/books")
+            .get(`${API_URL}/api/books`)
             .then((response) => {
                 setBooks(response.data);
             })

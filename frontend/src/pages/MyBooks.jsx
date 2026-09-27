@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import API_URL from "../api";
 
 function MyBooks() {
     const [shelves, setShelves] = useState([]);
@@ -12,7 +13,7 @@ function MyBooks() {
         if (storedUser) {
             axios
                 .get(
-                    `http://localhost:5005/api/shelves/${storedUser.id}`
+                     `${API_URL}/api/shelves/${storedUser.id}`
                 )
                 .then((response) => {
                     setShelves(response.data);
@@ -85,7 +86,7 @@ const removeBook = async (bookId) => {
 
     try {
         await axios.delete(
-            `http://localhost:5005/api/shelves/${storedUser.id}/${bookId}`
+             `${API_URL}/api/shelves/${storedUser.id}/${bookId}`
         );
 
         // Immediately remove it from the page

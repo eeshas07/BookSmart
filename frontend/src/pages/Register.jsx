@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import API_URL from "../api";
 
 function Register() {
     const [name, setName] = useState("");
@@ -17,7 +18,7 @@ function Register() {
 
         if (password.length < 6) {
             return "Weak";
-        } else if (password.length < 10) {
+        } else if (password.length < 7) {
             return "Medium";
         } else {
             return "Strong";
@@ -34,7 +35,7 @@ function Register() {
 
         try {
             const response = await axios.post(
-                "http://localhost:5005/api/auth/register",
+                `${API_URL}/api/auth/register`,
                 {
                     name,
                     email,
