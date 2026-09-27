@@ -139,7 +139,7 @@ const removeBook = async (bookId) => {
                                     </p>
                                     <button
     className="remove-book-button"
-    onClick={() => removeBook(item.bookId._id)}
+    onClick={() => removeBook=(item.bookId._id)}
 >
     Remove
 </button>
@@ -184,7 +184,12 @@ const removeBook = async (bookId) => {
                                     <p>
                                         by {item.bookId.author}
                                     </p>
-
+                                <button
+    className="remove-book-button"
+    onClick={() => removeBook=(item.bookId._id)}
+>
+    Remove
+</button>
                                     <Link
                                         to={`/books/${item.bookId._id}`}
                                     >
